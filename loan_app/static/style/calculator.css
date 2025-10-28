@@ -1,0 +1,140 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url(../image/calculator1.png);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.card {
+    background: #ffffff;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    backdrop-filter: blur(15px);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 40px;
+    font-weight: 800;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
+}
+
+input[type="number"],
+select {
+    display: block;
+    width: 100% !important; 
+    height: 32px;
+    box-sizing: border-box;  
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #fff;
+    padding: 0 6px;
+}
+
+
+select {
+    background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='20' viewBox='0 0 20 20' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M5 8l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px;
+    color: gray;
+}
+
+.radio-group {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ec8f02;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: dodgerblue;
+}
+
+.total_pay{
+  border: 1px solid gray;
+  border-radius: 8px;
+  color: #fff;
+  background: rgb(44, 43, 43);
+  padding: 4px;
+  text-align: end;
+  padding-right: 16px;
+}
+
+.result_payment{
+  width: 100%;
+  border-collapse: collapse;
+  color: #f1f5f9;
+  background-color: rgb(126, 103, 103);
+  border-radius: 4px;
+}
+
+
+
+
+.result_payment th{
+  color:white;
+  text-align: left;
+  padding: 12px 13px;
+  font-size: 15px;
+  border-radius: 4px;
+}
+.result_payment td{
+  color: black;
+  padding: 12px 14px;
+  font-size: 14px;
+  border-bottom: 1px solid #334155;
+}
+
+.result_payment tr:nth-child(even){
+  background-color: gray;
+}
+.result_payment tr:nth-child(odd){
+  background-color: rgb(167, 167, 167);
+}
+
+.result_payment tr:hover{
+  background-color: #c8c3c3;
+  transition: background-color 0.3s ease;
+}
+
+.export{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding: 4px 0;
+}

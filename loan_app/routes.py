@@ -82,32 +82,63 @@ def export_excel():
     output.seek(0)
     return send_file(output, as_attachment=True, download_name='loan_schedule.xlsx')
 
-# ----- Export PDF -----
+
 @main.route('/export_pdf', methods=['POST'])
 def export_pdf():
     schedule = request.form.get('schedule')
     df = pd.read_json(schedule)
     output = BytesIO()
-    doc = SimpleDocTemplate(output, pagesize=letter)
-    styles = getSampleStyleSheet()
 
+    # Create a full-width page layout
+    doc = SimpleDocTemplate(
+        output,
+        pagesize=letter,
+        leftMargin=36,   # small margins for full-width layout
+        rightMargin=36,
+        topMargin=36,
+        bottomMargin=36
+    )
+
+    styles = getSampleStyleSheet()
+    title_style = styles["Title"]
+    title_style.alignment = 1  # 1 = center alignment
+
+    # Create centered title
+    title = Paragraph("Loan Amortization Schedule", title_style)
+
+    # Prepare table data
     data = [["Period", "Payment", "Principal", "Interest", "Balance"]]
     for _, row in df.iterrows():
         data.append([
-            row['period'],
-            f"${row['payment']}",
-            f"${row['principal']}",
-            f"${row['interest']}",
-            f"${row['balance']}"
+            f"{row['period']}",
+            f"${row['payment']:.2f}",
+            f"${row['principal']:.2f}",
+            f"${row['interest']:.2f}",
+            f"${row['balance']:.2f}"
         ])
 
-    table = Table(data)
+    # Calculate full-page table width
+    page_width = letter[0] - (doc.leftMargin + doc.rightMargin)
+    col_widths = [page_width * w for w in [0.12, 0.22, 0.22, 0.22, 0.22]]
+
+    # Create table with full width
+    table = Table(data, colWidths=col_widths)
     table.setStyle(TableStyle([
-        ("BACKGROUND", (0,0), (-1,0), colors.grey),
-        ("TEXTCOLOR", (0,0), (-1,0), colors.whitesmoke),
-        ("GRID", (0,0), (-1,-1), 0.5, colors.black)
+        ("BACKGROUND", (0, 0), (-1, 0), colors.darkgrey),
+        ("TEXTCOLOR", (0, 0), (-1, 0), colors.whitesmoke),
+        ("ALIGN", (0, 0), (-1, -1), "CENTER"),
+        ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
+        ("FONTSIZE", (0, 0), (-1, 0), 12),
+        ("FONTSIZE", (0, 1), (-1, -1), 10),
+        ("GRID", (0, 0), (-1, -1), 0.5, colors.black),
+        ("BOTTOMPADDING", (0, 0), (-1, 0), 8),
+        ("TOPPADDING", (0, 0), (-1, 0), 8),
+        ("VALIGN", (0, 0), (-1, -1), "MIDDLE")
     ]))
 
-    doc.build([Paragraph("Loan Amortization Schedule", styles["Heading1"]), table])
+    # Build the document with centered title + full table
+    elements = [title, table]
+    doc.build(elements)
+
     output.seek(0)
     return send_file(output, as_attachment=True, download_name='loan_schedule.pdf')

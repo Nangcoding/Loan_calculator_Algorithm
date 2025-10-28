@@ -13,7 +13,7 @@
             <h2>Loan Calculator</h2>
             <form method="post" action="/calculator.html">
                 <label for="loanAmount">Loan Amount (USD)</label>
-                <input type="number" id="loanAmount" name="amount" placeholder="Enter amount" required>
+                <input type="number" value="1000" id="loanAmount" name="amount" placeholder="Enter amount" required>
 
                 <label for="repaymentPeriod">Repayment Period</label>
                 <select id="repaymentPeriod" name="period" required>
@@ -23,14 +23,15 @@
                 </select>
 
                 <label for="term">Repayment Term (Years)</label>
-                <input type="number" id="term" name="term" placeholder="Enter years" required>
-
-                <label>Annual Interest Rate (%)</label>
                 <div class="radio-group">
                     <label><input type="radio" name="rateType" value="Monthly" required> Monthly</label>
                     <label><input type="radio" name="rateType" value="years" required> Year</label>
                 </div>
-                <input type="number" id="interest" name="rate" placeholder="Enter interest rate" required>
+                <input type="number" value="2" id="term" name="term" placeholder="Enter years" required>
+
+                <label>Annual Interest Rate (%)</label>
+                
+                <input type="number" value="3" min="0" step="any" id="interest" name="rate" placeholder="Enter interest rate" required>
 
                 <label>Payment Method</label>
                 <div class="radio-group">
@@ -45,8 +46,12 @@
             <div class="total_pay">
                 <h6>Periodic Payment</h6>
                 <h3>${{ payment }}</h3>
-                <p>Total Interest: ${{ total_interest }}</p>
-                <p>Total Payment: ${{ total_payment }}</p>
+                <p>Total Interest: 
+                    <h5>${{ total_interest }}</h5>
+                </p>
+                <p>Total Payment: 
+                    <h5>${{ total_payment }}</h5>
+                </p>
             </div>
 
             <button class="btn btn-primary w-100 mt-3" id="toggleSchedule">View Payment Schedule</button>

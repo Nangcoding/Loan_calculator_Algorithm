@@ -42,24 +42,24 @@ def calculator():
 
         schedule = []
         balance = amount
-        total_interest = 0
+        total_interest = 0.0
 
         for i in range(1, total_payments + 1):
             interest = balance * r
             principal = payment - interest
             balance -= principal
-            if balance < 0: balance = 0
             total_interest += interest
             schedule.append({
                 'period': i,
                 'payment': round(payment, 2),
                 'principal': round(principal, 2),
                 'interest': round(interest, 2),
-                'balance': round(balance, 2)
+                'balance': round(balance if balance > 0 else 0, 2)
             })
 
         total_payment = payment * total_payments
 
+        total_interest = total_payment - amount
         save_calculation(amount, rate, period, term, method, total_payment, total_interest, payment)
 
         return render_template(

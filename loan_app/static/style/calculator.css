@@ -23,6 +23,7 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     width: 500px;
     backdrop-filter: blur(15px);
+    
 }
 
 h2 {
@@ -138,3 +139,163 @@ button:hover {
   margin-bottom: 12px;
   padding: 4px 0;
 }
+
+
+@media (min-width:320px) and (max-width: 599px) {
+  h2{
+    font-size: 26px;
+  }
+
+  body{
+    margin-top: 50px;
+    align-items: flex-start;
+  }
+
+  label{
+    font-size: 14px;
+  }
+  
+  input[type="number"],
+  select {
+    font-size: 13px;
+    height: 30px;
+  }
+  .radio-group {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .total_pay {
+    text-align: right;
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .export {
+    align-items: stretch;
+  }
+
+  
+ .result_payment {
+    font-size: 11px;
+    width: 100%;
+    table-layout: fixed;
+    word-wrap: break-word;
+  }
+
+  .result_payment th,
+  .result_payment td {
+    font-size: 10px;
+    padding: 4px;
+    text-align: center;
+    white-space: normal; 
+  }
+
+  .result_payment th:nth-child(1),
+  .result_payment td:nth-child(1) { width: 20%; }
+  .result_payment th:nth-child(2),
+  .result_payment td:nth-child(2) { width: 20%; }
+  .result_payment th:nth-child(3),
+  .result_payment td:nth-child(3) { width: 20%; }
+  .result_payment th:nth-child(4),
+  .result_payment td:nth-child(4) { width: 20%; }
+  .result_payment th:nth-child(5),
+  .result_payment td:nth-child(5) { width: 20%; }
+
+  button {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+
+@media (max-width: 980px) and (min-width: 600px) {
+
+    body {
+        margin-top: 10px;
+        background-position: center;
+        background-size: cover;
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .container {
+        flex-direction: column;
+        align-items: center;
+        padding: 0 15px;
+    }
+
+    .card {
+        width: 90%;
+        padding: 25px 30px;
+        border-radius: 10px;
+    }
+
+    h2 {
+        font-size: 32px;
+        margin-bottom: 15px;
+    }
+
+    label {
+        font-size: 15px;
+    }
+
+    input[type="number"],
+    select {
+        font-size: 15px;
+        height: 36px;
+    }
+
+    .radio-group {
+        flex-direction: row;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    button {
+        padding: 12px;
+        font-size: 24px;
+    }
+
+    #toggleSchedule{
+      padding: 12px;
+      font-size: 24px;
+    }
+
+    .total_pay {
+        text-align: right;
+        font-size: 24px;
+        padding: 10px;
+    }
+
+    
+
+    .export {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    #btnpdf{
+      font-size: 14px;
+      padding: 8px;
+    }
+    #excel{
+  
+      font-size: 14px;
+      padding: 8px;
+    }
+
+    .btn {
+        width: 100%;
+        font-size: 15px;
+    } 
+}
+
+
+
+
+
+
+
+
+ 

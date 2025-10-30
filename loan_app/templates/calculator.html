@@ -60,11 +60,11 @@
                 <div class="export">
                   <form method="POST" action="/export_pdf" target="_blank" class="d-inline">
                     <input type="hidden" name="schedule" value='{{ schedule | tojson }}'>
-                    <button class="btn btn-danger btn-sm">Export as PDF</button>
+                    <button class="btn btn-danger btn-sm " id="btnpdf">Export as PDF</button>
                 </form>
                 <form method="POST" action="/export_excel" target="_blank" class="d-inline">
                     <input type="hidden" name="schedule" value='{{ schedule | tojson }}'>
-                    <button class="btn btn-success btn-sm">Export as Excel</button>
+                    <button class="btn btn-success btn-sm " id="excel">Export as Excel</button>
                 </form>
                 </div>
 
